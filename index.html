@@ -4,8 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+
+    <!-- tailwind+daisyui -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+
 </head>
-<body>
-    
+<body class="bg-white shadow-xl max-w-md mx-auto my-15">
+    <section class="p-8">
+        <div class="p-8 flex flex-col justify-center items-center">
+            <img src="./assets/github-logo.png" alt="github-logo">
+            <h2 class="mt-7 mb-1 text-2xl font-semibold">GitHub Issues Tracker</h2>
+            <p class="text-[#64748B]">Sign in to manage your issues</p>
+        </div>
+
+        <div>
+            <fieldset class="fieldset rounded-box mx-8 my-6">
+
+            <label class="label">Username</label>
+            <input id="username" type="text" class="input w-full" placeholder="Enter Username" />
+            <span class="text-[12px] text-[#4A00FF] mb-2">Default: admin</span>
+
+            <label class="label">Password</label>
+            <input id="password" type="password" class="input w-full" placeholder="Enter Password" />
+            <span class="text-[12px] text-[#4A00FF] mb-2">Default: admin123</span>
+
+            <button id="sign-in-btn" class="btn btn-primary mt-4">Sign In</button>
+
+            </fieldset>
+        </div>
+        <div class="text-center">
+            <h5 class="mb-6">OR</h5>
+            <p class="text-[#64748B] mb-2">Demo Credentials:</p>
+        </div>
+        <div class="w-10/12 text-center py-6 mx-auto bg-[#F8FAFC]">
+            <h5>Username: admin</h5>
+            <h5>Password: admin123</h5>
+        </div>
+    </section>
+
+    <script src="./script.js"></script>
 </body>
 </html>
