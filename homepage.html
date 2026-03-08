@@ -4,8 +4,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+
+        <!-- tailwind+daisyui -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            font-family: "Geist", sans-serif;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello</h1>
+    <!-- navbar -->
+     <div class="navbar bg-base-100 shadow-sm px-20 py-5">
+  <div class="flex-1">
+    <div class="flex items-center gap-2">
+        <img src="./assets/github-logo_25231 1.png" alt="">
+        <h2 class="text-2xl font-semibold">GitHub Issues Tracker</h2>
+    </div>
+    
+  </div>
+  <div class="flex gap-2">
+    <input type="text" placeholder="Search issues..." class="input input-bordered w-24 md:w-auto" />
+    <button class="btn btn-primary">Search</button>
+  </div>
+    </div>
+
+    <!-- buttons -->
+     <div class="bg-white shadow-xl p-6 mt-15 mb-4 w-3/4 mx-auto rounded-md space-x-4">
+        <button class="btn btn-primary">All</button>
+        <button class="btn btn-outline opacity-60">Open</button>
+        <button class="btn btn-outline opacity-60">Closed</button>
+     </div>
+
+     <!-- issue counts -->
+      <div class="bg-white shadow-xl p-6 mb-4 w-3/4 mx-auto rounded-md flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div>
+                <img class="border-8 border-[#ECE4FF] rounded-full" src="./assets/Aperture.png" alt="Aperture logo">
+            </div>
+            <div>
+                <h2 class="text-xl font-semibold">50 Issues</h2>
+                <p class="text-[#64748B]">Track and manage your project issues</p>
+            </div>
+        </div>
+        <div class="flex space-x-4">
+            <p class="flex justify-center items-center gap-2"><img src="./assets/Ellipse-green.png" alt="Ellipse-green">Open</p>
+            <p class="flex justify-center items-center gap-2"><img src="./assets/Ellipse-purple.png" alt="Ellipse-purple">Closed</p>
+        </div>
+      </div>
+
+      <!-- cards -->
+       <div class="grid grid-cols-4 w-3/4 mx-auto rounded-md">
+        <div class="bg-white shadow-xl p-4 border-t-5 border-t-[#00A96E] rounded-md">
+            <div class="flex justify-between items-center mb-3">
+                <img src="./assets/Open-Status.png" alt="">
+                <span class="text-[#EF4444] bg-[#FEECEC] max-w-[80px] min-h-[20px] px-5 py-1 rounded-xl">High</span>
+            </div>
+            <h2 class="font-semibold mb-2">Fix navigation menu on mobile devices</h2>
+            <p class="text-[12px] text-[#64748B] mb-3">The navigation menu doesn't collapse properly on mobile devices...</p>
+            <div class="flex gap-1 mb-4">
+                <button class="flex justify-center items-center gap-[2px] text-[#EF4444] bg-[#FEECEC] max-w-[80px] min-h-[20px] px-5 py-1 border rounded-2xl"><img src="./assets/BugDroid.png" alt="">BUG</button>
+                <button class="flex justify-center items-center gap-[2px] text-[#D97706] bg-[#fcf5d9] max-w-[80px] min-h-[20px] px-5 py-1 border rounded-xl"><img src="./assets/BugDroid.png" alt="">High</button>
+            </div>
+            <hr>
+            <p class="mt-4 mb-2 text-[#64748B]">#1 by john_doe</p>
+            <p class="mb-4 text-[#64748B]">1/15/2024</p>
+        </div>
+       </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+        <div class="w-10 rounded-full">
+          <img
+            alt="Tailwind CSS Navbar component"
+            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+        </div>
+      </div>
+      <ul
+        tabindex="-1"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li>
+          <a class="justify-between">
+            Profile
+            <span class="badge">New</span>
+          </a>
+        </li>
+        <li><a>Settings</a></li>
+        <li><a>Logout</a></li>
+      </ul>
+    </div> -->
