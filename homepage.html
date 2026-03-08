@@ -37,34 +37,39 @@
     </div>
 
     <!-- buttons -->
-     <div class="bg-white shadow-xl p-6 mt-15 mb-4 w-3/4 mx-auto rounded-md space-x-4">
-        <button class="btn btn-primary">All</button>
-        <button class="btn btn-outline opacity-60">Open</button>
-        <button class="btn btn-outline opacity-60">Closed</button>
+     <div id="buttons-container">
+        <!-- <div class="bg-white shadow-xl p-6 mt-15 mb-4 w-3/4 mx-auto rounded-md space-x-4">
+          <button class=" btn btn-primary">All</button>
+          <button onclick="selectButton()" class="buttons btn btn-outline">Open</button>
+          <button onclick="selectButton()" class="buttons btn btn-outline">Closed</button>
+      </div> -->
      </div>
+     
 
      <!-- issue counts -->
-      <div class="bg-white shadow-xl p-6 mb-4 w-3/4 mx-auto rounded-md flex justify-between items-center">
-        <div class="flex items-center gap-2">
-            <div>
-                <img class="border-8 border-[#ECE4FF] rounded-full" src="./assets/Aperture.png" alt="Aperture logo">
-            </div>
-            <div>
-                <h2 class="text-xl font-semibold">50 Issues</h2>
-                <p class="text-[#64748B]">Track and manage your project issues</p>
-            </div>
-        </div>
-        <div class="flex space-x-4">
-            <p class="flex justify-center items-center gap-2"><img src="./assets/Ellipse-green.png" alt="Ellipse-green">Open</p>
-            <p class="flex justify-center items-center gap-2"><img src="./assets/Ellipse-purple.png" alt="Ellipse-purple">Closed</p>
+      <div id="cards-count-container" class="w-3/4 mx-auto ">
+          <div class="bg-white shadow-xl p-6 mb-4 flex justify-between items-center rounded-md">
+          <div class="flex items-center gap-2">
+              <div>
+                  <img class="border-8 border-[#ECE4FF] rounded-full" src="./assets/Aperture.png" alt="Aperture logo">
+              </div>
+              <div>
+                  <h2 id="issues-counter" class="text-xl font-semibold"></h2>
+                  <p class="text-[#64748B]">Track and manage your project issues</p>
+              </div>
+          </div>
+          <div class="flex space-x-4">
+              <p class="flex justify-center items-center gap-2"><img src="./assets/Ellipse-green.png" alt="Ellipse-green">Open</p>
+              <p class="flex justify-center items-center gap-2"><img src="./assets/Ellipse-purple.png" alt="Ellipse-purple">Closed</p>
+          </div>
         </div>
       </div>
 
       <!-- cards -->
-       <div class="grid grid-cols-4 w-3/4 mx-auto rounded-md">
-        <div class="bg-white shadow-xl p-4 border-t-5 border-t-[#00A96E] rounded-md">
+       <div id="cards-container" class="grid grid-cols-4 w-3/4 mx-auto rounded-md gap-4">
+        <!-- <div class="bg-white shadow-xl p-4 border-t-5 border-t-[#00A96E] rounded-md">
             <div class="flex justify-between items-center mb-3">
-                <img src="./assets/Open-Status.png" alt="">
+                <img src="./Open-Status.png" alt="Open-Status">
                 <span class="text-[#EF4444] bg-[#FEECEC] max-w-[80px] min-h-[20px] px-5 py-1 rounded-xl">High</span>
             </div>
             <h2 class="font-semibold mb-2">Fix navigation menu on mobile devices</h2>
@@ -76,8 +81,12 @@
             <hr>
             <p class="mt-4 mb-2 text-[#64748B]">#1 by john_doe</p>
             <p class="mb-4 text-[#64748B]">1/15/2024</p>
-        </div>
+        </div> -->
        </div>
+
+
+
+       <script src="./functionality.js"></script>
 </body>
 </html>
 
