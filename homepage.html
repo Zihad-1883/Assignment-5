@@ -36,13 +36,37 @@
   </div>
     </div>
 
+
+    <!-- modaL -->
+ <div class="p-8">
+    <h1 class="text-2xl font-bold mb-1">Fix broken image uploads</h1>
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="bg-[#00A96E] text-[12px] text-white px-2 py-1 rounded-full">Opened</span>
+      <img src="./assets/Ellipse 5.png" alt="">
+      <p class="text-[#64748B] text-[12px]">Opened by Fahim Ahmed</p>
+      <img src="./assets/Ellipse 5.png" alt="">
+      <p class="text-[#64748B] text-[12px]">22/02/2026</p>
+    </div>
+    <div class="flex items-center gap-1 mb-6">
+      <span class="flex justify-center items-center gap-[2px] bg-[#FECACA] text-[#EF4444] text-[12px] py-1 px-2 rounded-full"><img src="./assets/BugDroid.png" alt="">BUG</span><span class="flex justify-center items-center gap-[2px] bg-[#FDE68A] text-[#D97706] text-[12px] py-1 px-2 rounded-full"><img src="./assets/Lifebuoy.png" alt="">HELP WANTED</span>
+    </div>
+    <p class="text-[#64748B] mb-6">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+    <div class="bg-[#f9fafc] grid grid-cols-2 justify-around items-center p-4">
+        <div>
+          <p class="text-[#64748B]">Assignee:</p>
+          <h5 class="font-semibold">Fahim Ahmed</h5>
+        </div>
+        <div>
+          <p class="text-[#64748B]">Priority:</p>
+          <span class="bg-[#EF4444] text-[12px] text-white px-3 py-1 rounded-full">High</span>
+        </div>
+    </div>
+ </div>
+
+
+
     <!-- buttons -->
      <div id="buttons-container" class="bg-white shadow-xl p-6 mt-15 mb-4 w-3/4 mx-auto rounded-md space-x-4">
-        <!-- <div class="bg-white shadow-xl p-6 mt-15 mb-4 w-3/4 mx-auto rounded-md space-x-4">
-          <button class=" btn btn-primary">All</button>
-          <button onclick="selectButton()" class="buttons btn btn-outline">Open</button>
-          <button onclick="selectButton()" class="buttons btn btn-outline">Closed</button>
-      </div> -->
      </div>
      
 
@@ -67,22 +91,31 @@
 
       <!-- cards -->
        <div id="cards-container" class="grid grid-cols-4 w-3/4 mx-auto rounded-md gap-4">
-        <!-- <div class="bg-white shadow-xl p-4 border-t-5 border-t-[#00A96E] rounded-md">
-            <div class="flex justify-between items-center mb-3">
-                <img src="./Open-Status.png" alt="Open-Status">
-                <span class="text-[#EF4444] bg-[#FEECEC] max-w-[80px] min-h-[20px] px-5 py-1 rounded-xl">High</span>
-            </div>
-            <h2 class="font-semibold mb-2">Fix navigation menu on mobile devices</h2>
-            <p class="text-[12px] text-[#64748B] mb-3">The navigation menu doesn't collapse properly on mobile devices...</p>
-            <div class="flex gap-1 mb-4">
-                <button class="flex justify-center items-center gap-[2px] text-[#EF4444] bg-[#FEECEC] max-w-[80px] min-h-[20px] px-5 py-1 border rounded-2xl"><img src="./assets/BugDroid.png" alt="">BUG</button>
-                <button class="flex justify-center items-center gap-[2px] text-[#D97706] bg-[#fcf5d9] max-w-[80px] min-h-[20px] px-5 py-1 border rounded-xl"><img src="./assets/BugDroid.png" alt="">High</button>
-            </div>
-            <hr>
-            <p class="mt-4 mb-2 text-[#64748B]">#1 by john_doe</p>
-            <p class="mb-4 text-[#64748B]">1/15/2024</p>
-        </div> -->
+          <div id="loading" class="hidden">
+              <span class="loading loading-spinner loading-xs"></span>
+              <span class="loading loading-spinner loading-sm"></span>
+              <span class="loading loading-spinner loading-md"></span>
+              <span class="loading loading-spinner loading-lg"></span>
+              <span class="loading loading-spinner loading-xl"></span>
+          </div>
        </div>
+
+       
+              <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+          <div class="modal-box">
+            <div id="detailsContainer">
+              
+            </div>
+            <div class="modal-action">
+              <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn btn-primary">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
 
 
 
