@@ -22,23 +22,23 @@
 </head>
 <body>
     <!-- navbar -->
-     <div class="navbar bg-base-100 shadow-sm px-20 py-5">
-  <div class="flex-1">
-    <div class="flex items-center gap-2">
+     <div class="md:navbar bg-base-100 shadow-sm px-20 py-5">
+  <div class="m-3 md:flex-1">
+    <div class="md:flex items-center gap-2">
         <img src="./assets/github-logo_25231 1.png" alt="">
-        <h2 class="text-2xl font-semibold">GitHub Issues Tracker</h2>
+        <h2 class="mt-3 text-xl md:text-2xl font-semibold">GitHub Issues Tracker</h2>
     </div>
     
   </div>
-  <div class="flex gap-2">
-    <input type="text" placeholder="Search issues..." class="input input-bordered w-24 md:w-auto" />
-    <button class="btn btn-primary">Search</button>
+  <div class="m-3 md:flex gap-2">
+    <input id="input-search" type="text" placeholder="Search issues..." class="input input-bordered w-32 mr-3 md:w-auto" />
+    <button id="btn-search" class="btn btn-primary">Search</button>
   </div>
     </div>
 
 
     <!-- modaL -->
- <div class="p-8">
+ <!-- <div class="p-8">
     <h1 class="text-2xl font-bold mb-1">Fix broken image uploads</h1>
     <div class="flex items-center space-x-4 mb-6">
       <span class="bg-[#00A96E] text-[12px] text-white px-2 py-1 rounded-full">Opened</span>
@@ -61,7 +61,7 @@
           <span class="bg-[#EF4444] text-[12px] text-white px-3 py-1 rounded-full">High</span>
         </div>
     </div>
- </div>
+ </div> -->
 
 
 
@@ -72,7 +72,7 @@
 
      <!-- issue counts -->
       <div id="cards-count-container" class="w-3/4 mx-auto ">
-          <div class="bg-white shadow-xl p-6 mb-4 flex justify-between items-center rounded-md">
+          <div class="bg-white shadow-xl p-6 mb-4 flex flex-col items-start gap-3 md:flex-row justify-between items-center rounded-md">
           <div class="flex items-center gap-2">
               <div>
                   <img class="border-8 border-[#ECE4FF] rounded-full" src="./assets/Aperture.png" alt="Aperture logo">
@@ -90,7 +90,7 @@
       </div>
 
       <!-- cards -->
-       <div id="cards-container" class="grid grid-cols-4 w-3/4 mx-auto rounded-md gap-4">
+       <div id="cards-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-3/4 mx-auto rounded-md gap-4">
           <div id="loading" class="hidden">
               <span class="loading loading-spinner loading-xs"></span>
               <span class="loading loading-spinner loading-sm"></span>

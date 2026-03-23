@@ -24,7 +24,7 @@ async function displayModal(cardId){
     console.log(cardId);
 
 
-    const clicked = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
+    const clicked = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${cardId}`);
     const clickedData = await clicked.json();
     // console.log(clickedData)
 
@@ -36,20 +36,20 @@ async function displayModal(cardId){
          <div class="p-8">
     <h1 class="text-2xl font-bold mb-1">${data.data.title}</h1>
     <div class="flex items-center space-x-4 mb-6">
-      <span class="bg-[#00A96E] text-[12px] text-white px-2 py-1 rounded-full">Opened</span>
+      <span class="bg-[#00A96E] text-[12px] text-white px-2 py-1 rounded-full">${data.data.status}</span>
       <img src="./assets/Ellipse 5.png" alt="">
-      <p class="text-[#64748B] text-[12px]">Opened by Fahim Ahmed</p>
+      <p class="text-[#64748B] text-[12px]">Opened by ${data.data.author}</p>
       <img src="./assets/Ellipse 5.png" alt="">
-      <p class="text-[#64748B] text-[12px]">22/02/2026</p>
+      <p class="text-[#64748B] text-[12px]">${data.data.createdAt}</p>
     </div>
     <div class="flex items-center gap-1 mb-6">
-      <span class="flex justify-center items-center gap-[2px] bg-[#FECACA] text-[#EF4444] text-[12px] py-1 px-2 rounded-full"><img src="./assets/BugDroid.png" alt="">BUG</span><span class="flex justify-center items-center gap-[2px] bg-[#FDE68A] text-[#D97706] text-[12px] py-1 px-2 rounded-full"><img src="./assets/Lifebuoy.png" alt="">HELP WANTED</span>
+      <span class="flex justify-center items-center gap-[2px] bg-[#FECACA] text-[#EF4444] text-[12px] py-1 px-2 rounded-full"><img src="./assets/BugDroid.png" alt="">${data.data.labels[0]}</span><span class="${data.data.labels[1] === undefined ? "hidden" : "flex justify-center items-center gap-[2px] bg-[#FDE68A] text-[#D97706] text-[12px] py-1 px-2 rounded-full "}><img src="${data.data.labels[1] !== undefined ? "./assets/BugDroid.png": ""}" alt="">${data.data.labels[1] ? data.data.labels[1] : ""}</span>
     </div>
     <p class="text-[#64748B] mb-6">${data.data.description}</p>
     <div class="bg-[#f9fafc] grid grid-cols-2 justify-around items-center p-4">
         <div>
           <p class="text-[#64748B]">Assignee:</p>
-          <h5 class="font-semibold">Fahim Ahmed</h5>
+          <h5 class="font-semibold">${data.data.assignee}</h5>
         </div>
         <div>
           <p class="text-[#64748B]">Priority:</p>
@@ -89,38 +89,53 @@ async function displayModal(cardId){
         }
 
 
+        // getting and toggling buttons 
+        const allBtn = document.createElement('button');
+        allBtn.textContent = "All"
+        allBtn.className = "btn btn-primary"
+        buttonsContainer.appendChild(allBtn)
+    
+        const openBtn = document.createElement('button');
+        openBtn.textContent = "Open"
+        openBtn.className = "btn btn-outline"
+        buttonsContainer.appendChild(openBtn)
+    
+    
+        const closeBtn = document.createElement('button');
+        closeBtn.textContent = "Close"
+        closeBtn.className = "btn btn-outline"
+        buttonsContainer.appendChild(closeBtn)
+    
+        const allButtons = [allBtn,openBtn,closeBtn];
 
-async function loadcards(){
-    // getting and toggling buttons 
-    const allBtn = document.createElement('button');
-    allBtn.textContent = "All"
-    allBtn.className = "btn btn-primary"
-    buttonsContainer.appendChild(allBtn)
-
-    const openBtn = document.createElement('button');
-    openBtn.textContent = "Open"
-    openBtn.className = "btn btn-outline"
-    buttonsContainer.appendChild(openBtn)
 
 
-    const closeBtn = document.createElement('button');
-    closeBtn.textContent = "Close"
-    closeBtn.className = "btn btn-outline"
-    buttonsContainer.appendChild(closeBtn)
-
-    const allButtons = [allBtn,openBtn,closeBtn];
-    allButtons.forEach(button => {
-        button.addEventListener('click',function(){
+        function btnToggling(){
+            allButtons.forEach(button => {
+            button.addEventListener('click',function(){
             allButtons.forEach(btn => {
                 btn.classList.add('btn-outline');
                 btn.classList.remove('btn-primary')
-            })
-            button.classList.add('btn-primary');
-            button.classList.remove('btn-outline');
-        })
-    })    
+                })
+                button.classList.add('btn-primary');
+                button.classList.remove('btn-outline');
+                })
+            })    
+        }
 
+        function btnDefault(){
+            allButtons.forEach(button => {
+                button.classList.add('btn-outline');
+                button.classList.remove('btn-primary')
+                })
+                // button.classList.add('btn-primary');
+                // button.classList.remove('btn-outline');  
+        }
 
+async function loadcards(){
+    
+
+    btnToggling()
     showLoading()
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
     const data = await res.json();
@@ -152,19 +167,23 @@ async function loadcards(){
         // issues counter
         issuesCounter.innerText = cardsContainer.children.length + " Issues"
       
-
-
-
+    });
+    hideLoading()
     
-        // open button
-        openBtn.addEventListener('click',() => {
-            showLoading()
+}
+
+// open button
+openBtn.addEventListener('click',() => {
+    showLoading()
+    const res = fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+        .then(res => res.json())
+        .then(data => {
             cardsContainer.innerHTML = ""
             data.data.forEach(card => {
             if(card.status === "open"){
                         const newCard = document.createElement('div');
             newCard.innerHTML = `
-                <div onclick = "my_modal_5.displayModal()" class="bg-white shadow-xl p-4 border-t-5 rounded-md ${card.status === "open" ? "border-t-[#00A96E]" : "border-t-purple-600"}">
+                <div onclick = "displayModal(${card.id})" class="bg-white shadow-xl p-4 border-t-5 rounded-md ${card.status === "open" ? "border-t-[#00A96E]" : "border-t-purple-600"}">
                     <div class="flex justify-between items-center mb-3">
                         <img src = "./Open-Status.png">
                         <span id = "priority-span" class="text-[#EF4444] bg-[#FEECEC] px-5 py-1 rounded-xl ${priorityLogic(card.priority)} ">${card.priority}</span>
@@ -189,19 +208,24 @@ async function loadcards(){
         // issues counter
         issuesCounter.innerText = cardsContainer.children.length + " Issues"
         hideLoading()
-
-
         })
-   
 
-        // close button
-        closeBtn.addEventListener('click',() => {
+
+})
+
+
+// close button
+closeBtn.addEventListener('click',() => {
+    showLoading()
+    const res = fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+        .then(res => res.json())
+        .then(data => {
             cardsContainer.innerHTML = ""
             data.data.forEach(card => {
                 if(card.status === "closed"){
                             const newCard = document.createElement('div');
                 newCard.innerHTML = `
-                    <div onclick = "my_modal_5.displayModal()" class="bg-white shadow-xl p-4 border-t-5 rounded-md ${card.status === "open" ? "border-t-[#00A96E]" : "border-t-purple-600"}">
+                    <div onclick = "displayModal(${card.id})" class="bg-white shadow-xl p-4 border-t-5 rounded-md ${card.status === "open" ? "border-t-[#00A96E]" : "border-t-purple-600"}">
                         <div class="flex justify-between items-center mb-3">
                             <img src="./assets/Closed-Status.png">
                             <span id = "priority-span" class="text-[#EF4444] bg-[#FEECEC] px-5 py-1 rounded-xl ${priorityLogic(card.priority)} ">${card.priority}</span>
@@ -225,17 +249,22 @@ async function loadcards(){
             
         // issues counter
         issuesCounter.innerText = cardsContainer.children.length + " Issues"
-
+        hideLoading()
         })
+})
 
 
-        // all button
-        allBtn.addEventListener('click',() => {
+// all button
+allBtn.addEventListener('click',() => {
+    showLoading()
+    const res = fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+        .then(res => res.json())
+        .then(data => {
             cardsContainer.innerHTML = ""
             data.data.forEach(card => {
                 const newCard = document.createElement('div');
                 newCard.innerHTML = `
-                <div onclick = "my_modal_5.displayModal(${card.id})" class="bg-white shadow-xl p-4 border-t-5 rounded-md ${card.status === "open" ? "border-t-[#00A96E]" : "border-t-purple-600"}">
+                <div onclick = "displayModal(${card.id})" class="bg-white shadow-xl p-4 border-t-5 rounded-md ${card.status === "open" ? "border-t-[#00A96E]" : "border-t-purple-600"}">
                 <div class="flex justify-between items-center mb-3">
                     <img src="${statusIcon(card.status)}" alt="${statusIcon(card.status)}">
                     <span id = "priority-span" class="text-[#EF4444] bg-[#FEECEC] px-5 py-1 rounded-xl ${priorityLogic(card.priority)} ">${card.priority}</span>
@@ -256,14 +285,58 @@ async function loadcards(){
         })
         // issues counter
         issuesCounter.innerText = cardsContainer.children.length + " Issues"
+        hideLoading()
         })
-
-
-    });
-  hideLoading()
-}
-
+})
 loadcards();
 
 
 
+
+// search
+document.getElementById('btn-search').addEventListener('click',() => {
+    btnDefault()
+    const input = document.getElementById('input-search');
+    const searchValue = input.value.trim().toLowerCase();
+    // console.log(searchValue)
+
+    fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+        .then((res) => res.json())
+        .then((data) => {
+            const allIssues = data.data;
+            // console.log(allIssues)
+            
+            const searchedIssues = allIssues.filter((issue) => {
+                return issue.title.toLowerCase().includes(searchValue);
+               
+                
+            })
+            //  console.log(searchedIssues);
+            cardsContainer.innerHTML = "";
+            searchedIssues.forEach(issue => {
+
+                const searchCards = document.createElement('div');
+                searchCards.innerHTML = `
+                    <div onclick = "displayModal(${issue.id})" class="bg-white shadow-xl p-4 border-t-5 rounded-md ${issue.status === "open" ? "border-t-[#00A96E]" : "border-t-purple-600"}">
+                    <div class="flex justify-between items-center mb-3">
+                        <img src="${statusIcon(issue.status)}" alt="${statusIcon(issue.status)}">
+                        <span id = "priority-span" class="text-[#EF4444] bg-[#FEECEC] px-5 py-1 rounded-xl ${priorityLogic(issue.priority)} ">${issue.priority}</span>
+                    </div>
+                    <h2 class="text-[14px] font-semibold mb-2">${issue.title}</h2>
+                    <p class="text-[12px] text-[#64748B] mb-3 line-clamp-2">${issue.description}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <button class="flex justify-center items-center gap-[2px] text-[#EF4444] bg-[#FEECEC] px-3 py-1 border rounded-2xl"><img src="./assets/BugDroid.png" alt="">${issue.labels[0]}</button>
+                        <button class="flex justify-center items-center gap-[2px] text-[#D97706] bg-[#fcf5d9] px-3 py-1 border rounded-xl ${issue.labels[1] === undefined ? "hidden" : "flex"}"><img src="${issue.labels[1] !== undefined ? "./assets/BugDroid.png": ""}" alt="">${issue.labels[1] !== undefined ? issue.labels[1] : ""}</button>
+                    </div>
+                    <hr>
+                    <p class="mt-4 mb-2 text-[#64748B]">#1 by ${issue.author}</p>
+                    <p class="mb-4 text-[#64748B]">${issue.createdAt}</p>
+                </div>
+                `
+                cardsContainer.appendChild(searchCards)
+                // console.log(issue)
+            })
+            issuesCounter.innerText = cardsContainer.children.length + " Issues"
+            
+        })
+})
