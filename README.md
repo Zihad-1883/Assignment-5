@@ -1,128 +1,50 @@
-# 🌟 Welcome To (সহজ সরল সিম্পল) Assignment - 5
+# Question - 1 . What is the difference between var, let, and const?
 
-# **📅 Deadline For 60 marks:** 9th March, 2026 (11:59 pm ⏱️)  
-#  📅 No Deadline For 50 marks  
-# **📅 Deadline For 30 marks:** Any time after 9th March.
+## Answer : All of these are used for variable declaration. let and const are new updates from ES6 and we use these instead of var. Because var is not block scoped and it leaks out of a block and gets hoisted to the top of the code and it is used even before the code is written and causes confusion. But let and const is function scoped and does not have the problems var has. In let, we can redeclare the value of stored variable like var but in const we cannot redeclare the value of the stored value. 
+<br>
+<br>
 
----
+# Question - 2 . What is the spread operator (...)?
+ 
+## Answer : Spread operator expands an array or an object into individual items. For example, if we have an array like array1 = [1,2,3] and another array like array2 = [4,5,6] and if we want to merge array1 into array2 we use spread method. We write , 
+  let array1 = [1,2,3]; <br>
+  let array2 = [4,5,6]; <br>
+  array2 = [...array1 , 4,5,6]; <br>
+  console.log(array2); <br>
 
-# Assignment-05: GitHub Issues Tracker
+## We will get output as [1,2,3,4,5,6]
+<br>
+<br>
 
+# Question - 3 . What is the difference between map(), filter(), and forEach()?
 
-### **API Endpoints:**
-###  **All Issues:** 
-  - https://phi-lab-server.vercel.app/api/v1/lab/issues 
+## Answer : All 3 methods is using to loop through inside an array . Difference is , forEach() only does the looping like an usual for loop and it does not return anything . filter() returns a new array with elements that matches with the condition given to it . map() returns a new array with all elements inside transformed.
+<br>
+<br>
 
+# Question - 4 .  What is an arrow function?
 
-###  **Single Issue:**
-   - https://phi-lab-server.vercel.app/api/v1/lab/issue/{id}
+## Answer : Arrow function is a new method of writing usual functions which came with the ES6 update . Normally we declare a function like ,
+  function sum(){ <br>
+    // code here <br>
+  }
 
-   - Example: https://phi-lab-server.vercel.app/api/v1/lab/issue/33
+## With arrow function , 
+  const sum = () => { <br>
+    // code here <br>
+  }
 
+## Arrow function also can be used inside addEventListener and all other relevant places . We do not need to type return to return something if the function code is one line, otherwise we need to write return statement . It is a modern way of writing functions.
+<br>
+<br>
 
-###  **Search Issue:** https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q={searchText}
+# Question - 5 . What are template literals?
 
-   - Example:  https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications
+## Answer : We normally use '' or "" for declaring stings and writing class names in js an html . Template literals lets us write dynamic code in place of static sting with backticks `` . Instead of writing 
 
+let card = { price : 500} <br>
+let price = "the price is 500tk"
+## We Write
 
----
-
-## 📝 Main Requirements
-
-## 🎨 Design Part
-
-## Login Page
-- Create a login page containing a logo, title, and sub-title
-- Below that, there will be 2 inputs, a sign-in button, and a demo credential to sign in. Follow the Figma for this page 
-- Styled as per Figma
-
-## Main Page: 
-
-### Navbar: 
-
-- Navbar with website logo/name on the left
-- Search input and button on the right
-
-### Tab Section like Figma: 
-
-- 3 tab ( All, Open, Closed) at the top of this section.(**All**, **Open**, **Closed**)
-
-- Below the tab, there will be an icon, the issue count, some text on the left, and an open and closed marker on the right
-
-- Responsiveness: The website should be responsive for mobile devices. It is totally up to you. 
-
-
---- 
-
-
-## ⚙️ Functionalities
-- In login page, there will be default admin credentials (username, password). You need to sign in using these credentials.
-
-- Load all issues and display as per Figma
-
-- On clicking on an open or closed tab, it will load the issues data of the related tab and show it in a display-like card in a 4-column layout like Figma. By default, it will show all data 
-
-- Each card shows:
-  - Title
-  - Description
-  - Status 
-  - Author
-  - Priority
-  - Label
-  - CreatedAt
-- Clicking on an issue  card will open a modal and show all the information about that Issue. 
-
-### 🚀 Challenges
-
-
-- Show the card Top border based on their category(open, closed), open card will have Green Boder, closed card will have a purple border on top. 
-
-- Loading spinner on data load
-
-- Show active button on changing category names
-
-- Implement Search Functionality and 8 meaningful github commit.  
-
-- Create a readme file and answer this question on your own. Don’t copy-paste from Google or any AI chatbot. 
-    - 1️⃣ What is the difference between var, let, and const?
-    - 2️⃣ What is the spread operator (...)?
-    - 3️⃣ What is the difference between map(), filter(), and forEach()?
-    - 4️⃣ What is an arrow function?
-    - 5️⃣ What are template literals?
-
-
----
-
-## 🛠️ Technology Stack
-
-- **HTML**
-- **CSS** (Vanilla/Tailwind/DaisyUI)
-- **JavaScript** (Vanilla)
-
----
-
-## 🔑 Demo Credentials
-
-```text
-Username: admin
-Password: admin123
-```
-
-
----
-
-### Optional: 
- - No need to show status: Open, Closed styles On modals. 
- - No Need to show icon on labels 
- - No need to apply styles on Priority 
---- 
-
-
-## 📤 What to submit
-
-- **GitHub Repository Link:**
-- **Live Site Link:**
-
----
-
-
+let price = `the price is ${card.price} tk`
+## So we can add data dynamically.
