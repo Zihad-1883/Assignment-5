@@ -1,6 +1,6 @@
 # Question - 1 . What is the difference between var, let, and const?
 
-## Answer : All of these are used for variable declaration. let and const are new updates from ES6 and we use these instead of var. Because var is not block scoped and it leaks out of a block and gets hoisted to the top of the code and it is used even before the code is written and causes confusion. But let and const is function scoped and does not have the problems var has. In let, we can redeclare the value of stored variable like var but in const we cannot redeclare the value of the stored value. 
+## Answer : All of these are used for variable declaration. let and const are new updates from ES6 and we use these instead of var. Because var is not block scoped and it leaks out of a block and gets hoisted to the top of the code and it is used even before the code is written and causes confusion. But let and const is function scoped and does not have the problems var has. In let, we can redeclare the value of stored variable like var but in const we cannot redeclare the value of the stored variable. 
 <br>
 <br>
 
@@ -40,7 +40,7 @@
 
 # Question - 5 . What are template literals?
 
-## Answer : We normally use '' or "" for declaring stings and writing class names in js an html . Template literals lets us write dynamic code in place of static sting with backticks `` . Instead of writing 
+## Answer : We normally use '' or "" for declaring stings and writing class names in js an html . Template literals let us write dynamic code in place of static string with backticks `` . Instead of writing 
 
 let card = { price : 500} <br>
 let price = "the price is 500tk"
